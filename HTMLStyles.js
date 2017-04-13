@@ -169,9 +169,14 @@ class HTMLStyles {
       .map(([key, value]) => {
         if (!styleProps[key]) { return undefined }
 
+          if (isNumeric(parseFloat(value.replace('px', '')))) {
+            value = parseFloat(value.replace('px', ''));
+          }
+
         const testStyle = {}
         testStyle[key] = value
-        if (styleProps[key](testStyle, key, '', ReactPropTypeLocations.prop)) {
+
+        /*if (styleProps[key](testStyle, key, '', ReactPropTypeLocations.prop)) {
           // See if we can convert a 20px to a 20 automagically
           if (styleProps[key] === React.PropTypes.number) {
             const numericValue = parseFloat(value.replace('px', ''))
@@ -183,7 +188,7 @@ class HTMLStyles {
             }
           }
           return undefined
-        }
+        }*/
         return [key, value]
       })
       .filter((prop) => prop !== undefined)
@@ -201,6 +206,10 @@ class HTMLStyles {
   cssStringToRNStyle (str, styleset = STYLESETS.TEXT) {
     return this.cssToRNStyle(this.cssStringToObject(str), styleset)
   }
+}
+
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 module.exports = new HTMLStyles()

@@ -20,7 +20,7 @@ const PRE_TAG_NAMES = [
   'pre', 'code'
 ].reduce((acc, n) => { acc.add(n); return acc }, new Set())
 
-class HTMLTextNode extends React.Component {
+class HTMLTextNode extends React.PureComponent {
   /* ****************************************************************************/
   // Class
   /* ****************************************************************************/

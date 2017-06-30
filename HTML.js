@@ -1,13 +1,12 @@
 import React from 'react'
 import { View } from 'react-native'
-import shallowCompare from 'react-addons-shallow-compare'
 import htmlparser2 from 'htmlparser2'
 import HTMLElement from './HTMLElement'
 import HTMLTextNode from './HTMLTextNode'
 import HTMLRenderers from './HTMLRenderers'
 import HTMLStyles from './HTMLStyles'
 
-class HTML extends React.Component {
+class HTML extends React.PureComponent {
   /* ****************************************************************************/
   // Class
   /* ****************************************************************************/
@@ -21,14 +20,6 @@ class HTML extends React.Component {
 
   static defaultProps = {
     renderers: HTMLRenderers
-  }
-
-  /* ****************************************************************************/
-  // Data Lifecycle
-  /* ****************************************************************************/
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
   }
 
   /* ****************************************************************************/

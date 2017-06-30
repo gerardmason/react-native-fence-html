@@ -1,6 +1,5 @@
 import React from 'react'
 import { Text } from 'react-native'
-import shallowCompare from 'react-addons-shallow-compare'
 import { AllHtmlEntities } from 'html-entities'
 
 const RE = Object.freeze({
@@ -57,14 +56,6 @@ class HTMLTextNode extends React.Component {
         }
       }
     }
-  }
-
-  /* ****************************************************************************/
-  // Data Lifecycle
-  /* ****************************************************************************/
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
   }
 
   /* ****************************************************************************/
